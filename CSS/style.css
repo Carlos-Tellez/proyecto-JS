@@ -56,30 +56,30 @@ header h1{
     scale: 1.05;
 }
 
-.contenedor-items .item .img-item{
+.contenedor .contenedor-items .item .img-item{
     width: 100%;
 }
 
-.contenedor-items .item .titulo-item{
+.contenedor .contenedor-items .item .titulo-item{
     display: block;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
 }
 
-.contenedor-items .item .precio-item{
+.contenedor .contenedor-items .item .precio-item{
     display: block;
     font-weight: bold;
     text-align: center;
     font-size: 22px;
 }
 
-.contenedor-items .item .boton-item{
+.contenedor .contenedor-items .item .boton-item{
     display: block;
     margin: 10px auto;
     border: none;
-    background: black;
-    color: white;
+    background-color: black;
+    color: #fff;
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -98,6 +98,8 @@ header h1{
     position: sticky !important;
     top: 0;
     transition: .3s;
+    opacity: 0;
+    margin-right: -100;
 }
 
 .carrito .header-carrito{
@@ -134,9 +136,9 @@ header h1{
 .carrito .carrito-item .carrito-item-cantidad{
     border: none;
     font-size: 18px;
-    background: transparent;
+    background-color: transparent;
     display: inline-block;
-    width: 30px;
+    width:30px;
     padding: 5px;
     text-align: center;
 }
@@ -215,6 +217,17 @@ header h1{
     scale: 1.05;
 }
 
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: "Comic Neue", cursive;
+    background-image: url(../IMG/banner.jpg);
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+}
+
 /* Responsive */
 
 @media screen and (max-width:850px){
@@ -230,4 +243,3 @@ header h1{
         width: 100%;
     }
 }
-

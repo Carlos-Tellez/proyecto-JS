@@ -1,3 +1,4 @@
+
 var carritoVisible = false;  //esta variable mantiene el eatado visible del carrito de compras//
 
 if(document.readyState == 'loading'){
@@ -192,4 +193,209 @@ function actualizarTotalCarrito(){
 
     document.getElementsByClassName('carrito-precio-total')[0].innerText = '$'+total.toLocaleString("es") + ",00";
 
+}
+
+// Buscador de articulos 
+
+let products = {
+    data:[
+        {
+            productName: "Dragon Ball Super vol 13",
+            category:"Manga",
+            precio: "$70.000",
+            cantstokc: "10 unidades",
+            Image: "../IMG/Manga1.jpg",
+        },
+        {
+            productName: "My Hero Academy vol 26",
+            category:"Manga",
+            precio: "$50.000",
+            cantstokc: "15 unidades",
+            Image: "../IMG/manga2.jpg",
+        },
+        {
+            productName: "One Piece vol 99",
+            category:"Manga",
+            precio: "$70.000",
+            cantstokc: "08 unidades",
+            Image: "../IMG/Manga3.jpg",
+        },
+        {
+            productName: "Camisa Unisex Anime Coleccion",
+            category:"Camisas",
+            precio: "$40.000",
+            cantstokc: "30 unidades",
+            Image: "../IMG/camisa1.jpg",
+        },
+        {
+            productName: "Camisa Unisex Anime Furia",
+            category:"Camisas",
+            precio: "$40.000",
+            cantstokc: "20 unidades",
+            Image: "../IMG/camisa1.jpg",
+        },
+        {
+            productName: "Camisa Unisex Anime Legacy",
+            category:"Camisas",
+            precio: "$40.000",
+            cantstokc: "25 unidades",
+            Image: "../IMG/camisa1.jpg",
+        },
+        {
+            productName: "AMAZING SPIDER MAN",
+            category:"Comics",
+            precio: "$85.000",
+            cantstokc: "09 unidades",
+            Image: "../IMG/comic1.jpg",
+        },
+        {
+            productName: "Superman",
+            category:"Comics",
+            precio: "$81.000",
+            cantstokc: "12 unidades",
+            Image: "../IMG/comic2.jpg",
+        },
+        {
+            productName: "Star Wars",
+            category:"Comics",
+            precio: "$130.000",
+            cantstokc: "05 unidades",
+            Image: "../IMG/comic3.jpg",
+        },
+        {
+            productName: "FIGURA DE GEMINIS (SAINT SEIYA) BANDAI",
+            category:"Figuras",
+            precio: "$170.000",
+            cantstokc: "06 unidades",
+            Image: "../IMG/figura1.jpg",
+        },
+        {
+            productName: "FIGURA DE MINATO (NARUTO) BANDAI",
+            category:"Figuras",
+            precio: "$140.000",
+            cantstokc: "04 unidades",
+            Image: "../IMG/figura2.jpg",
+        },
+        {
+            productName: "FIGURA DE LUFFY (ONE PIECE) BANDAI",
+            category:"Figuras",
+            precio: "$140.000",
+            cantstokc: "Agotado",
+            Image: "../IMG/figura3.jpg",
+        },
+        {
+            productName: "Funko Pop - Rokect",
+            category:"Nuevo",
+            precio: "proximamente",
+            cantstokc: "05 unidades",
+            Image: "../IMG/funko.jpg",
+        },
+        {
+            productName: "Album One Piece - Pannini",
+            category:"Nuevo",
+            precio: "proximamente",
+            cantstokc: "40 unidades",
+            Image: "../IMG/album.jpg",
+        },
+        {
+            productName: "Maleta Star wars",
+            category:"Nuevo",
+            precio: "proximamente",
+            cantstokc: "3 unidades",
+            Image: "../IMG/maleta.jpg",
+        },
+    ],
+};
+
+
+for(let i of products.data){
+    //creamos la card
+    let card = document.createElement("div");
+    //la tarjeta debe tener la categoria y debe permanecer oculta inicialmente
+    card.classList.add("card", i.category, "hide");
+    // imagen div
+    let imgContainer = document.createElement("div");
+    imgContainer.classList.add("image-container");
+
+    let image = document.createElement("img");
+    image.setAttribute("src", i.Image); //i
+    imgContainer.appendChild(image);
+    card.appendChild(imgContainer);
+    //container
+    let container = document.createElement("div");
+    container.classList.add("container");
+    //nombre del producto
+    let name = document.createElement("h5");
+    name.classList.add("product-name");
+    name.innerText = i.productName.toUpperCase();
+    container.appendChild(name);
+    //precio
+    let precio = document.createElement("h6")
+    precio.innerText = i.precio;
+    container.appendChild(precio)
+    //cantidad en stock
+    let cantstokc = document.createElement("h6")
+    cantstokc.innerText = i.cantstokc;
+    container.appendChild(cantstokc)
+
+    card.appendChild(container);
+    document.getElementById("products").appendChild(card);
+
+}
+
+//parámetro desde el botón (parámetro igual que categoría)
+
+function filterProduct(value){
+    //codigo de boton
+    let buttons = document.querySelectorAll(".button-value");
+    buttons.forEach((button) => {
+        //comprobar si el valor es igual al inerText
+        if (value.toUpperCase() == button.innerText.toUpperCase()) {
+            button.classList.add("active");
+        }
+        else{
+            button.classList.remove("active");
+        }
+    });
+
+    let elements = document.querySelectorAll(".card");
+    elements.forEach((element) => { 
+        //mostrar todas las tarjetas al hacer clic en el botón 'all'
+        if (value == "all") {
+            element.classList.remove("hide");
+        } else { 
+            //verificar si el elemento contiene una clase de categoría
+            if (element.classList.contains(value)) {
+                //
+                element.classList.remove("hide");
+            } else {
+                //ocultar otros elementos
+                element.classList.add("hide");
+            }
+        }
+
+    });
+}
+
+// Boton Buscar 
+document.getElementById("search").addEventListener("click", () =>{
+    let searchInput = document.getElementById("search-input").value;
+    let elements = document.querySelectorAll(".product-name");
+    let cards = document.querySelectorAll(".card");
+    
+
+    elements.forEach((element, index)=>{
+        if (element.innerText.includes(searchInput.toUpperCase())){
+            cards[index].classList.remove("hide");
+        } else {
+            cards[index].classList.add("hide")
+        }
+    });
+
+});
+
+//mostrar inicialmente todos los productos
+
+window.onload = () => {
+    filterProduct("all");
 }

@@ -13,6 +13,29 @@
     <header>
         <h1> Tienda Geek </h1>
     </header>
+    <!--Buscador de Articulos-->
+    <section class="buscador">
+        <div class="wrapper">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="busque el nombre del producto aquí.....">
+                <button id="search">Buscar</button>
+            </div>
+            <div id="buttons">
+                <button class="button-value" onclick="filterProduct('all')">All</button>
+                <button class="button-value" onclick="filterProduct('Manga')">Manga</button>
+                <button class="button-value" onclick="filterProduct('Camisas')">Camisas</button>
+                <button class="button-value" onclick="filterProduct('Comics')">Comics</button>
+                <button class="button-value" onclick="filterProduct('Figuras')">Figuras</button>
+                <button class="button-value" onclick="filterProduct('Nuevo')">Nuevo</button>
+            </div>
+            <div id="products"></div>
+        </div>
+    </section>
+
+    <section class="cont-zona">
+        <h2> Zona de Compras </h2>
+    </section>
+
     <section class="contenedor">
         <div class="contenedor-items">
         <!-- Mangas-->
@@ -127,7 +150,7 @@
             </div>
 
             <div class="carrito-items">
-                 <!-- 
+                <!-- 
                 <div class="carrito-item">
                     <img src="./IMG/manga2.jpg" alt="" width="80px">
                     <div class="carrito-item-detalles">

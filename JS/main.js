@@ -397,5 +397,88 @@ document.getElementById("search").addEventListener("click", () =>{
 //mostrar inicialmente todos los productos
 
 window.onload = () => {
-    filterProduct("all");
+    filterProduct("");
 }
+
+// carrusel 
+
+let imagenes = [
+    {
+        "url": "../IMG/Captura 1.jpg",
+        "nombre": "Comics y Mangas",
+        "descripcion": "En Pocos dias llegaran nuevos volumenes de tus Comics y Mangas favoritos"
+
+    },
+    {
+        "url": "../IMG/Captura 2.jpg",
+        "nombre": "Nuevos productos de coleccion",
+        "descripcion": "si eres coleccioniste de seguro te encantaran nuestros nuevos funko pop"
+
+    },
+    {
+        "url": "../IMG/Captura 3.jpg",
+        "nombre": "ALBUM X 50 SOBRES SPIDERMAN 60th ANNIVERSARY",
+        "descripcion": "La nueva colección de stickers y tarjetas de Spider Man llega a Panini para celebrar 60 años de su trayectoria en el universo de los cómics."
+
+    },
+]
+
+
+let atras = document.getElementById('atras');
+let adelante = document.getElementById('adelante');
+let imagen = document.getElementById('img');
+let puntos = document.getElementById('puntos');
+let texto = document.getElementById('texto')
+let actual = 0
+posicionCarrusel()
+
+atras.addEventListener('click', function(){
+    actual -=1
+
+    if (actual == -1){
+        actual = imagenes.length - 1
+    }
+
+    imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
+    texto.innerHTML = `
+    <h3>${imagenes[actual].nombre}</h3>
+    <p>${imagenes[actual].descripcion}</p>
+    `
+    posicionCarrusel()
+})  
+adelante.addEventListener('click', function(){
+    actual +=1
+
+    if (actual == imagenes.length){
+        actual = 0
+    }
+
+    imagen.innerHTML = ` <img class="img" src="${imagenes[actual].url}" alt="logo pagina" loading="lazy"></img>`
+    texto.innerHTML = `
+    <h3>${imagenes[actual].nombre}</h3>
+    <p>${imagenes[actual].descripcion}</p>
+    `
+    posicionCarrusel()
+})  
+
+function posicionCarrusel() {
+    puntos.innerHTML = ""
+    for (var i = 0; i <imagenes.length; i++){
+        if(i == actual){
+            puntos.innerHTML += '<p class="bold">.<p>'
+        }
+        else{
+            puntos.innerHTML += '<p>.<p>'
+        }
+    } 
+}
+
+
+// Dark Mode
+
+const btnSwitch = document.querySelector('#switch');
+
+btnSwitch.addEventListener('click', () => {
+	document.body.classList.toggle('dark');
+	btnSwitch.classList.toggle('active');
+});

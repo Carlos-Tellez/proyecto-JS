@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="./JS/main.js" async></script>
     <link rel="stylesheet" href="./CSS/style.css">
     <title>Tienda Geek</title>
@@ -12,13 +13,24 @@
 <body>
     <header>
         <h1> Tienda Geek </h1>
+        <nav>
+			<a class="logotipo" href="#">Tienda Geek</a>
+			<div class="enlaces">
+				<a href="#">Inicio</a>
+				<a href="#">Buscar</a>
+				<a href="#">Comprar</a>
+				<button class="switch" id="switch">
+					<span><i class="fas fa-sun"></i></span>
+					<span><i class="fas fa-moon"></i></span>
+				</button>
+			</div>
+		</nav>
     </header>
     <!--Buscador de Articulos-->
-    <section class="buscador">
         <div class="wrapper">
             <div id="search-container">
                 <input type="search" id="search-input" placeholder="busque el nombre del producto aquí.....">
-                <button id="search">Buscar</button>
+                <button id="search"><i class="fa-solid fa-magnifying-glass">  Buscar</i></button>
             </div>
             <div id="buttons">
                 <button class="button-value" onclick="filterProduct('all')">All</button>
@@ -30,12 +42,35 @@
             </div>
             <div id="products"></div>
         </div>
+
+    <section class="carrusel-img">
+        <div class="carrusel">
+            <div class="atras">
+                <img id="atras" src="./IMG/atras.svg" alt="atras" loading="lazy">
+            </div>
+
+            <div class="imagenes">
+                <div id="img">
+                    <img class="img" src="./IMG/Captura 1.jpg" alt="imagen 1" loading="lazy">
+                </div>
+                <div id="texto" class="texto">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="adelante" id="adelante">
+                <img  src="./IMG/adelante.svg" alt="adelante" loading="lazy">
+            </div>
+        </div>
+
+        <div class="puntos" id="puntos"></div>
     </section>
 
     <section class="cont-zona">
         <h2> Zona de Compras </h2>
     </section>
-
+    
     <section class="contenedor">
         <div class="contenedor-items">
         <!-- Mangas-->
@@ -199,6 +234,8 @@
         
 
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JS/sweetAlert.js"></script>
     <footer> 
         <p>GEEK WEB © Copyright 2023, All Rights Reserved </p>
         <i class="fa-brands fa-facebook"></i>
